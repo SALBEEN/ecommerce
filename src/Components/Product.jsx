@@ -191,21 +191,29 @@ const Product = () => {
   return (
     <div className="min-h-screen bg-black text-white p-5 pt-10">
       {/* Filter Buttons */}
-      <div className="pt-10">
-        <div className="w-full flex items-center justify-center bg-slate-500 rounded-2xl mb-8">
-          <div className="buttons flex w-full justify-around p-5 text-xl font-bold">
-            {["All", "Nike", "Puma", "Calibre"].map((category) => (
-              <button
-                key={category}
-                className="bg-slate-800 hover:bg-white hover:text-black p-3 rounded-xl"
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+      <div
+        className="w-full flex items-center justify-center bg-slate-500 rounded-2xl mb-8"
+        style={{
+          position: "fixed", // Keep the bar fixed at the top
+          top: 0, // Align it to the top of the viewport
+          zIndex: 1000, // Ensure it stays on top of other elements
+          width: "100%", // Make it span the full width
+        }}
+      >
+        <div className="buttons flex w-full justify-around p-5 text-xl font-bold">
+          {["All", "Nike", "Puma", "Calibre"].map((category) => (
+            <button
+              key={category}
+              className="bg-slate-800 hover:bg-white hover:text-black p-3 rounded-xl"
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
         </div>
+      </div>
 
+      <div className="pt-20">
         {/* making the subtotal and card area  */}
 
         <div className="flex items-center justify-center bg-slate-800 p-6 shadow-inner">
@@ -224,7 +232,7 @@ const Product = () => {
                 </button> */}
               <Link
                 to="/cart"
-                className="bg-gradient-to-r from-blue-600 to-blue-400 px-30 py-4 rounded-xl text-white shadow-md w-full sm:w-1/2 text-center transition transform hover:scale-105 hover:shadow-lg"
+                className="bg-gradient-to-r from-blue-600 to-blue-400 px-10 py-4 rounded-xl text-white shadow-md w-full sm:w-1/2 text-center transition transform hover:scale-105 hover:shadow-lg"
               >
                 🛒 My Cart
               </Link>
