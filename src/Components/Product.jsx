@@ -189,7 +189,7 @@ const Product = () => {
       : productData.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-black text-white p-5 pt-10">
+    <div className="min-h-scree n bg-black text-white p-5 pt-10">
       {/* Filter Buttons */}
       <div className="w-full flex items-center justify-center bg-slate-500 rounded-2xl mb-8 mt-20 ">
         <div className="buttons flex w-full justify-around p-5 text-xl font-bold">

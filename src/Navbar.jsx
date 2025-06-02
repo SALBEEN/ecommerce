@@ -44,6 +44,9 @@ const Navbar = () => {
             <li className="w-full bg-slate-700 p-3 rounded-xl hover:bg-black hover:text-white hover:font-bold">
               <Link to="/product">Products</Link>
             </li>
+            <li>
+              <Link to="https://portfolio-iy81.vercel.app/#">Portfolio</Link>
+            </li>
             <li className="w-full bg-slate-700 p-3 rounded-xl hover:bg-black hover:text-white hover:font-bold">
               <Link to="/project">Projects</Link>
             </li>
