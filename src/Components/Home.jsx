@@ -1,118 +1,131 @@
-// import React from "react";
-// import bgImage from "../assets/bg.jpg";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faSquareFacebook } from "@fortawesome/free-brands-svg-icons";
-// import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-// import { faSquareXTwitter } from "@fortawesome/free-brands-svg-icons";
-// import { faSquareInstagram } from "@fortawesome/free-brands-svg-icons";
-// import Image from "../assets/salbeen.jpg";
-
-// const Home = () => {
-//   return (
-//     <>
-//       <div
-//         className="h-screen bg-cover bg-center flex  justify-center items-center "
-//         style={{ backgroundImage: `url(${bgImage})` }}
-//       >
-//         <div className="grid lg:grid-cols-3 sm:grid-cols-1 bg-white-100/20 backdrop-blur-sm z-50 justify-between items-center rounded-xl p-10 sm:mt-50 mx-20 sm:gap-20">
-//           <div>
-//             <img
-//               src={Image}
-//               alt="Profile image"
-//               className="lg:h-80 lg:w-80 h-60 w-60 rounded-full"
-//             />
-//           </div>
-//           <div className="intro text-white p-10 lg:text-4xl text-2xl">
-//             <h1 className="italic">Hi!</h1>
-//             <h1 className="tracking-wide underline underline-offset-8 italic">
-//               Its Salbeen <span className="text-orange-700"> Chapagain </span>
-//             </h1>
-//           </div>
-//           <div className="Socio-link  flex flex-row lg:flex-col text-5xl gap-10 text-gray-300 lg:justify-end justify-center ">
-//             <a href="#" className="hover:text-black transition">
-//               <FontAwesomeIcon icon={faSquareFacebook} />
-//             </a>
-//             <a href="#" className="hover:text-black transition">
-//               <FontAwesomeIcon icon={faLinkedin} />
-//             </a>
-//             <a href="#" className="hover:text-black transition">
-//               <FontAwesomeIcon icon={faSquareXTwitter} />
-//             </a>
-//             <a href="#" className="hover:text-black transition">
-//               <FontAwesomeIcon icon={faSquareInstagram} />
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Home;
-
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import bgImage from "../assets/bg.jpg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSquareFacebook,
-  faLinkedin,
-  faSquareXTwitter,
-  faSquareInstagram,
-} from "@fortawesome/free-brands-svg-icons";
-import Image from "../assets/salbeen.jpg";
+import featuredImage1 from "../assets/puma1.jpeg";
+import featuredImage2 from "../assets/nike1.jpeg";
+import featuredImage3 from "../assets/calibre1.jpeg";
 
 const Home = () => {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubscribe = () => {
+    if (email) {
+      alert(`Thank you for subscribing, ${email}!`);
+      setEmail("");
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
+
+  const featuredProducts = [
+    { id: 1, image: featuredImage1, name: "Puma Shoes" },
+    { id: 2, image: featuredImage2, name: "Nike Shoes" },
+    { id: 3, image: featuredImage3, name: "Calibre Products" },
+  ];
+
   return (
-    <div
-      className="min-h-screen bg-cover bg-center flex justify-center items-center"
-      style={{ backgroundImage: `url(${bgImage})` }}
-    >
-      <div className="grid lg:grid-cols-3 sm:grid-cols-1 bg-white-100/20 backdrop-blur-md z-50 justify-between items-center rounded-xl p-6 md:p-10 mx-4 md:mx-10 sm:gap-10 lg:gap-0">
-        {/* Profile Image */}
-        <div className="flex justify-center">
-          <img
-            src={Image}
-            alt="Profile image"
-            className="lg:h-80 lg:w-80 h-60 w-60 rounded-full object-cover shadow-lg"
-          />
-        </div>
-
-        {/* Intro Text */}
-        <div className="text-white text-center lg:text-left px-4 py-6 lg:px-10">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light italic mb-2">
-            Hi!
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <div
+        className="relative bg-cover bg-center h-screen flex items-center justify-center"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="relative z-10 text-center">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-blue-400">
+            Welcome to ShopEase
           </h1>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold italic tracking-wide">
-            It's <span className="text-orange-500">Salbeen Chapagain</span>
-          </h2>
+          <p className="mt-4 text-lg md:text-2xl text-gray-300">
+            Your one-stop shop for the best products and deals!
+          </p>
+          <button
+            onClick={() => navigate("/product")}
+            className="mt-8 inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition"
+          >
+            Start Shopping
+          </button>
         </div>
+      </div>
 
-        {/* Social Icons */}
-        <div className="flex flex-row lg:flex-col justify-center lg:justify-end items-center gap-8 text-4xl sm:text-5xl text-gray-300">
-          <a
-            href="https://www.facebook.com/salveen.chapagai"
-            className="hover:text-blue-600 transition duration-300 ease-in-out"
+      {/* Featured Products Section */}
+      <div className="py-16 px-6 md:px-16 bg-gradient-to-b from-gray-900 to-black">
+        <h2 className="text-4xl font-bold text-center text-blue-400">
+          Featured Products
+        </h2>
+        <p className="text-gray-400 text-center mt-2">
+          Check out some of our top picks for you!
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+          {featuredProducts.map((product) => (
+            <div key={product.id} className="relative group">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-64 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform"
+              />
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+                <button
+                  onClick={() => navigate("/product")}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg"
+                >
+                  View Product
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="py-16 bg-black text-center">
+        <h2 className="text-4xl font-bold text-blue-400">
+          What Our Customers Say
+        </h2>
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <p className="text-gray-300">
+              "ShopEase has the best deals! I found everything I needed at great
+              prices."
+            </p>
+            <h3 className="mt-4 text-blue-400 font-bold">- Sita Mam</h3>
+          </div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <p className="text-gray-300">
+              "Amazing customer service and fast delivery. Highly recommend!"
+            </p>
+            <h3 className="mt-4 text-blue-400 font-bold">- Salbeen chaps</h3>
+          </div>
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <p className="text-gray-300">
+              "The quality of the products is top-notch. I will definitely shop
+              here again."
+            </p>
+            <h3 className="mt-4 text-blue-400 font-bold">- Samikshya poudel</h3>
+          </div>
+        </div>
+      </div>
+
+      {/* Newsletter Subscription Section */}
+      <div className="py-16 bg-blue-500 text-center">
+        <h2 className="text-4xl font-bold text-white">Stay Updated</h2>
+        <p className="text-white mt-2">
+          Subscribe to our newsletter for the latest deals and updates.
+        </p>
+        <div className="mt-6 flex justify-center">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="p-3 rounded-l-lg w-64 md:w-96 text-black border border-white"
+          />
+          <button
+            onClick={handleSubscribe}
+            className="bg-white text-blue-500 font-bold py-3 px-6 rounded-r-lg hover:bg-gray-100 transition"
           >
-            <FontAwesomeIcon icon={faSquareFacebook} />
-          </a>
-          <a
-            href="#"
-            className="hover:text-blue-800 transition duration-300 ease-in-out"
-          >
-            <FontAwesomeIcon icon={faLinkedin} />
-          </a>
-          <a
-            href="#"
-            className="hover:text-black transition duration-300 ease-in-out"
-          >
-            <FontAwesomeIcon icon={faSquareXTwitter} />
-          </a>
-          <a
-            href="#"
-            className="hover:text-pink-600 transition duration-300 ease-in-out"
-          >
-            <FontAwesomeIcon icon={faSquareInstagram} />
-          </a>
+            Subscribe
+          </button>
         </div>
       </div>
     </div>

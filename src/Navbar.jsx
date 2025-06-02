@@ -8,8 +8,8 @@ const Navbar = () => {
     <>
       <nav className="fixed top-0 left-0 w-full bg-yellow-600/20 backdrop-blur-md z-50 p-4">
         <div className="flex justify-between items-center">
-          <div className="text-3xl font-bold text-white px-10">
-            Shop _ Mandu
+          <div className="text-xl md:text-5xl font-extrabold text-blue-400">
+            ShopEase
           </div>
           <div
             className=" text-3xl md:hidden text-white"
@@ -25,6 +25,9 @@ const Navbar = () => {
               <Link to="/product">Products</Link>
             </li>
             <li>
+              <Link to="https://portfolio-iy81.vercel.app/#">Portfolio</Link>
+            </li>
+            <li>
               <Link to="/projects">Projects</Link>
             </li>
             <li>
@@ -35,16 +38,16 @@ const Navbar = () => {
 
         {open && (
           <ul className="md:hidden mt-4 flex flex-col space-y-4 text-white text-lg">
-            <li>
+            <li className="w-full bg-slate-700 p-3 rounded-xl hover:bg-black hover:text-white hover:font-bold">
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className="w-full bg-slate-700 p-3 rounded-xl hover:bg-black hover:text-white hover:font-bold">
               <Link to="/product">Products</Link>
             </li>
-            <li>
+            <li className="w-full bg-slate-700 p-3 rounded-xl hover:bg-black hover:text-white hover:font-bold">
               <Link to="/project">Projects</Link>
             </li>
-            <li>
+            <li className="w-full bg-slate-700 p-3 rounded-xl hover:bg-black hover:text-white hover:font-bold">
               <Link to="/contact">Contact Us</Link>
             </li>
           </ul>
